@@ -11,12 +11,18 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 import pymysql
 import os
+import environ
 
 pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+ROOT_DIR = environ.Path(__file__) - 2  # (briteaccess/)
+# PROJECT_DIR = ROOT_DIR.path("briteaccess")
+
+env = environ.Env()
+env.read_env(str(ROOT_DIR.path(".env")))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -25,7 +31,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'xj*ggn=bzzev0+zr^ec73d@5&w1co9)=0tk6wiz2d+d$mvx!+2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool("DJANGO_DEBUG", True)
 
 ALLOWED_HOSTS = ['*']
 
@@ -82,9 +88,9 @@ WSGI_APPLICATION = 'bizdirect.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bizdirect',
-        'USER': 'root',
-        'PASSWORD': 'docker',
+        'NAME': env.str('DATABASE_NAME', 'dbname'),
+        'USER': env.str('DATABASE_USER', 'user'),
+        'PASSWORD': env.str('DATABASE_PASSWORD', 'password'),
         'HOST': 'localhost',
         'PORT': '3306',
         'ATOMIC_REQUESTS': True,
