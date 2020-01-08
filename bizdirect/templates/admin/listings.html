@@ -1,0 +1,54 @@
+{% extends 'admin/base.html' %}
+{% block main %}
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">{{ breadcrumb.0 }}</a>
+        </li>
+        <li class="breadcrumb-item active">{{ breadcrumb.1 }}</li>
+      </ol>
+      
+      
+      <div class="box_general">
+        <div class="header_box">
+            <h2 class="d-inline-block">Directory Listings</h2>
+        </div>
+		<div class="list_general">
+			<ul>
+                {% for business in listings %}
+				<li>
+                    <h4>{{ business.name }}</h4>
+                    {% for cat in business.categories_list %}
+                        <small>{{ cat.title }}</small>{% if forloop.counter != business.categories_list|length %},{% endif %}
+                    {% endfor %}
+                    <br/><br/>
+                    <p>{{ business.description }}</p>
+                    <ul class="booking_list">
+                        <li><strong>Contact Email</strong> {{ business.contact_email }}</li>
+                        {% for phone in business.phones %}
+                            <li><strong>Phone: {{ forloop.counter }}</strong> {{ phone }}</li>
+                        {% endfor %}
+                        <li><strong>Website:</strong> {{ business.website }}</li>
+                        <li><strong>Address:</strong> {{ business.address }}</li>
+                        <li><strong>Views:</strong> {{ business.views }}</li>
+                    </ul>
+                    <p><a href="{% url 'edit-listing' id=business.id %}" class="btn_1 gray"><i class="fa fa-fw fa-edit"></i> Edit</a></p>
+                    <ul class="buttons">
+                        {% if business.active %}
+                            <li><a href="{% url 'deactivate-listing' id=business.id %}" class="btn_1 gray delete wishlist_close" title="Deactivate business listing"><i class="fa fa-fw fa-times-circle-o"></i> Deactivate</a></li>
+                        {% else %}
+                            <li><a href="{% url 'activate-listing' id=business.id %}" class="btn_1 gray approve wishlist_close" title="Activate business listing"><i class="fa fa-fw fa-check-circle-o"></i> Activate</a></li>
+                        {% endif %}
+                        <li><a href="{% url 'delete-listing' id=business.id %}" class="btn_1 gray delete wishlist_close" title="Delete business listing"><i class="fa fa-fw fa-times-circle-o"></i> Delete</a></li>
+                    </ul>
+				</li>
+                {% empty %}
+                <h5>No Directory Listing</h5>
+                {% endfor %}
+			</ul>
+		</div>
+	  </div>
+    </div>
+	<!-- /.container-fluid-->
+{% endblock %}

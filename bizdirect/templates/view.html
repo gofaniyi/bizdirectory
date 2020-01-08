@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="BizDirect A Classic Business Directory Service">
+    <meta name="author" content="gofaniyi">
+    <title>BizDirect A Classic Business Directory Service | Home</title>
+
+    <!-- Favicons-->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="https://res.cloudinary.com/dk8am3md8/image/upload/v1578237614/project/img/apple-touch-icon-57x57-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="https://res.cloudinary.com/dk8am3md8/image/upload/v1578237611/project/img/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="https://res.cloudinary.com/dk8am3md8/image/upload/v1578237588/project/img/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="https://res.cloudinary.com/dk8am3md8/image/upload/v1578237587/project/img/apple-touch-icon-144x144-precomposed.png">
+
+    <!-- GOOGLE WEB FONT -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+    <!-- BASE CSS -->
+    <link href="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578235879/project/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578235895/project/css/style.css" rel="stylesheet">
+	<link href="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578235881/project/css/vendors.css" rel="stylesheet">
+
+    <!-- YOUR CUSTOM CSS -->
+    <link href="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578235890/project/css/custom.css" rel="stylesheet">
+
+</head>
+
+<body>
+	
+	<div id="page">
+		
+	<header class="header_in">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-12">
+					<div id="logo">
+                        BizDirectory
+					</div>
+				</div>
+				<div class="col-lg-9 col-12">
+					<ul id="top_menu">
+                        <li><a href="{% url 'home' %}" class="btn_add">Home</a></li>
+                        <li><a href="{% url 'listings' %}" class="btn_add">Admin</a></li>
+						<li><a href="{% url 'login' %}" id="sign-in" class="login" title="Sign In">Sign In</a></li>
+					</ul>
+					<!-- /top_menu -->
+					<a href="#menu" class="btn_mobile">
+						<div class="hamburger hamburger--spin" id="hamburger">
+							<div class="hamburger-box">
+								<div class="hamburger-inner"></div>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</header>
+	<!-- /header -->
+	
+	<main>
+		<div id="results">
+		   <div class="container">
+			   <div class="row">
+			   </div>
+			   <!-- /row -->
+		   </div>
+		   <!-- /container -->
+	   </div>
+		
+	   	<!-- /results -->		
+
+		<div class="container margin_60_35">
+			
+			<div class="row">
+                <div class="col-lg-8">
+						<section id="description">
+							<div class="detail_title_1">
+								<h1>{{ listing.name }}</h1>
+								<a class="address" href="javascript:">{{ listing.address }}</a>
+							</div>
+							<p>{{ listing.description}}</p>
+							<h5 class="add_bottom_15">Phones</h5>
+							<div class="row add_bottom_30">
+								<div class="col-md-4">
+									<ul class="bullets">
+                                        {% for phone in listing.phones %}
+                                            <li>{{ phone }}</li>
+                                        {% endfor %}
+									</ul>
+								</div>
+							</div>
+                            <h5 class="add_bottom_15">Other Information</h5>
+							<div class="row add_bottom_30">
+								<div class="col-md-8">
+									<ul class="bullets">
+                                        <li>Contact Email: {{ listing.contact_email }}</li>
+                                        <li>Website: {{ listing.website }}</li>
+									</ul>
+								</div>
+							</div>
+							<!-- /row -->
+						</section>
+                    </div>
+			</div>
+			<!-- /row -->
+			
+		</div>
+		<!-- /container -->
+		
+	</main>
+	<!--/main-->
+	
+	</div>
+	<!-- page -->
+	
+	<!-- COMMON SCRIPTS -->
+    <script src="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578237562/project/js/common_scripts.js"></script>
+	<script src="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578237558/project/js/functions.js"></script>
+	<script src="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578237544/project/assets/validate.js"></script>
+
+	<!-- Map -->
+	<script src="http://maps.googleapis.com/maps/api/js"></script>
+	<script src="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578237559/project/js/infobox.js"></script>
+	<script src="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578237561/project/js/map.js"></script>
+	<script src="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578237559/project/js/infobox.js"></script>
+  
+</body>
+</html>

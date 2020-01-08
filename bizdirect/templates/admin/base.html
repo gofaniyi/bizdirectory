@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="BizDirect A Classic Business Directory Service">
+  <meta name="author" content="gofaniyi">
+  <title>BizDirect A Classic Business Directory Service | Admin dashboard</title>
+	
+  <!-- Favicons-->
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	
+  <!-- Bootstrap core CSS-->
+  <link href="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578249186/backend/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Main styles -->
+  <link href="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578249168/backend/css/admin.css" rel="stylesheet">
+  <!-- Icon fonts-->
+  <link href="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578249199/backend/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!-- Plugin styles -->
+  <link href="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578249191/backend/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+  <link href="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578249195/backend/vendor/dropzone.css" rel="stylesheet">
+  <link href="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578249168/backend/css/date_picker.css" rel="stylesheet">
+  <!-- Your custom styles -->
+  <link href="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578249168/backend/css/custom.css" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.min.css">
+
+	
+</head>
+
+<body class="fixed-nav sticky-footer" id="page-top">
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-default fixed-top" id="mainNav">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Home">
+          <a class="nav-link" href="{% url 'home' %}">
+            <i class="fa fa-fw fa-home"></i>
+            <span class="nav-link-text">Home</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Categories">
+          <a class="nav-link" href="{% url 'categories' %}">
+            <i class="fa fa-fw fa-list"></i>
+            <span class="nav-link-text">Categories</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Add Category">
+          <a class="nav-link" href="{% url 'add-category' %}">
+            <i class="fa fa-fw fa-plus-circle"></i>
+            <span class="nav-link-text">Add category</span>
+          </a>
+        </li>
+		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="My Listings">
+          <a class="nav-link" href="{% url 'listings' %}">
+            <i class="fa fa-fw fa-list"></i>
+            <span class="nav-link-text">My listings</span>
+          </a>
+        </li>
+		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Add listing">
+          <a class="nav-link" href="{% url 'add-listing' %}">
+            <i class="fa fa-fw fa-plus-circle"></i>
+            <span class="nav-link-text">Add listing</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">
+            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- /Navigation-->
+  <div class="content-wrapper">
+    {% block main %}
+
+    {% endblock %}
+  </div>
+    <!-- /.container-wrapper-->
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578249194/backend/vendor/jquery/jquery.min.js"></script>
+    <script src="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578249188/backend/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578249186/backend/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578249191/backend/vendor/chart.js/Chart.min.js"></script>
+    <script src="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578249199/backend/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578249190/backend/vendor/datatables/dataTables.bootstrap4.js"></script>
+	<script src="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578249195/backend/vendor/jquery.selectbox-0.2.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/selectize.min.js"></script>
+	<script src="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578249195/backend/vendor/retina-replace.js"></script>
+	<script src="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578249194/backend/vendor/jquery.magnific-popup.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578249170/backend/js/admin.js"></script>
+	<!-- Custom scripts for this page-->
+	<script src="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578249196/backend/vendor/dropzone.min.js"></script>
+	<script src="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578249188/backend/vendor/bootstrap-datepicker.js"></script>
+	<script>$('input.date-pick').datepicker();</script>
+    <script src="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578249170/backend/js/admin.js"></script>
+	<!-- Custom scripts for this page-->
+    <script src="https://res.cloudinary.com/dk8am3md8/raw/upload/v1578249170/backend/js/admin-datatables.js"></script>
+	<script>
+        $(function() {
+            $('#select-name').selectize({
+                delimiter: ',',
+                persist: false,
+                openOnFocus: false,
+                closeAfterSelect: true,
+                create: false,
+                plugins: ['remove_button']
+            })
+        });
+    </script>
+	
+</body>
+</html>

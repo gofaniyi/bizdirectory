@@ -1,0 +1,116 @@
+{% extends 'admin/base.html' %}
+{% block main %}
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">{{ breadcrumb.0 }}</a>
+        </li>
+        <li class="breadcrumb-item active">{{ breadcrumb.1 }}</li>
+      </ol>
+      <form method="post" action="{% url 'post-add-listing' %}">
+        {% csrf_token %}
+		<div class="box_general padding_bottom">
+			<div class="header_box version_2">
+				<h2><i class="fa fa-file"></i>Basic info</h2>
+			</div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="hidden" value="{{ listing.id }}" name="id">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" placeholder="" name="name" value="{{ listing.name}}" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="select-name" name="categories" placeholder="Enter categories for business" multiple>
+                            {% for category in categories %}
+                                <option value="{{ category.id }}" {% if category.id in listing.category_ids %} selected {% endif %}>{{ category.title }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- /row-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea class="form-control" name="description">{{ listing.description }}</textarea>
+                    </div>
+                </div>
+            </div>
+            <!-- /row-->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Contact Email</label>
+                        <input type="email" class="form-control" required name="contact_email" value="{{ listing.contact_email }}">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Website</label>
+                        <input type="text" class="form-control" required name="website" value="{{ listing.website }}">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input type="text" class="form-control" required name="address" value="{{ listing.address }}">
+                    </div>
+                </div>
+            </div>
+            <!-- /row-->
+		</div>
+		<!-- /box_general-->
+
+        <div class="box_general padding_bottom">
+			<div class="header_box version_2">
+				<h2><i class="fa fa-phone"></i>Phones</h2>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label>Primary Phone</label>
+                            <input type="text" class="form-control" placeholder="" required name="primary_phone" value="{{ listing.phones.0 }}">
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label>Other Phone</label>
+                            <input type="text" class="form-control" placeholder="" name="other_phone" {% if listing.phones|length > 1 %} value="{{ listing.phones.1 }}" {% endif %}>
+                        </div>
+                    </div>
+				</div>
+			</div>
+			<!-- /row-->
+		</div>
+		
+		{% comment %} <div class="box_general padding_bottom">
+			<div class="header_box version_2">
+				<h2><i class="fa fa-image"></i>Images</h2>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label>Photos</label>
+						<form action="/file-upload" class="dropzone"></form>
+					</div>
+				</div>
+			</div>
+			<!-- /row-->
+		</div> {% endcomment %}
+        
+		<p><button type="submit" class="btn_1 medium">{% if listing %}Update{% else %}Save{% endif %}</button></p>
+      </form>
+	</div>
+    <!-- /.container-fluid-->
+   	</div>
+    <!-- /.container-wrapper-->
+
+{% endblock %}
