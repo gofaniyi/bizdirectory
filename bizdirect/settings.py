@@ -28,7 +28,7 @@ env.read_env(str(ROOT_DIR.path(".env")))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'xj*ggn=bzzev0+zr^ec73d@5&w1co9)=0tk6wiz2d+d$mvx!+2'
+SECRET_KEY = env.str('DJANGO_SECRET_KEY', 'randomKey')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DJANGO_DEBUG", True)
@@ -40,7 +40,6 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'business.apps.BusinessConfig',
-    # 'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -64,7 +63,7 @@ ROOT_URLCONF = 'bizdirect.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['../BizDirect/bizdirect/templates/'],
+        'DIRS': [f'{ROOT_DIR}/bizdirect/templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

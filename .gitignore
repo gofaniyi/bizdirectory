@@ -2,3 +2,4 @@ venv*
 db.sqlite3
 *.pyc
 docker-compose.yml
+.env
