@@ -28,6 +28,9 @@ def view_listing(request, id):
     except Business.DoesNotExist:
         raise Http404
 
+    listing.views = listing.views + 1
+    listing.save()
+
     data = {'listing': listing}
     return render(request, 'view.html', data)
 
