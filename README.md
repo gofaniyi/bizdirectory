@@ -1,22 +1,22 @@
 ### BizDirectory
 A Classic Business Directory Service
 
-Home site: http://67.205.188.65:8000/business/home/
+Home site: http://base_url/business/home/
 
-Login site: http://67.205.188.65:8000/login
+Login site: http://base_url/login
 
 #### Credentials
 - Username: admin
 - Password: nimda
 
-Admin site: http://67.205.188.65:8000/business/listings/
+Admin site: http://base_url/business/listings/
 
 
-Search API: http://67.205.188.65:8000/business/search/
+Search API: http://base_url/business/search/
 
 Screenshot of search API: https://prnt.sc/qkrg2w
 
-Search API with parameters: http://67.205.188.65:8000/business/search?q=
+Search API with parameters: http://base_url/business/search?q=
 
 Screenshot: https://prnt.sc/qkrgt9
 
